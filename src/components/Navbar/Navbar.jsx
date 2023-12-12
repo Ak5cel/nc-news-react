@@ -1,21 +1,16 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { useState, useEffect } from "react";
+import { getTopics } from "../../utils/api";
 
 const Navbar = () => {
-  const topics = [
-    {
-      slug: "coding",
-      description: "Code is love, code is life",
-    },
-    {
-      slug: "football",
-      description: "FOOTIE!",
-    },
-    {
-      slug: "cooking",
-      description: "Hey good looking, what you got cooking?",
-    },
-  ];
+  const [topics, setTopics] = useState([]);
+
+  useEffect(() => {
+    getTopics().then((topics) => {
+      setTopics(topics);
+    });
+  }, []);
 
   return (
     <nav className="nav">
