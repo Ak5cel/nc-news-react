@@ -1,0 +1,9 @@
+.banner {
+  padding: 2rem 2rem;
+  height: 22vh;
+}
+
+.banner-heading {
+  font-size: 2em;
+  margin-bottom: 0.5rem;
+}
