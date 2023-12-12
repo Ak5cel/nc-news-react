@@ -1,15 +1,13 @@
 import ArticleCard from "../ArticleCard";
+import "./ArticlesList.css";
 
 const ArticlesList = ({ articles }) => {
   return (
-    <div className="articles-list">
-      Articles List
-      <ul>
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
-      </ul>
-    </div>
+    <ul className="articles-list">
+      {articles.map((article) => {
+        return <ArticleCard key={article.article_id} article={article} />;
+      })}
+    </ul>
   );
 };
 

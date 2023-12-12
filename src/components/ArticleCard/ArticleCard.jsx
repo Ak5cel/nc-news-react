@@ -1,11 +1,14 @@
 import "./ArticleCard.css";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+dayjs.extend(relativeTime);
 
 const ArticleCard = ({ article }) => {
   return (
     <li className="article-card">
       <h3>{article.title}</h3>
       <p>
-        {article.author} • {article.created_at}
+        {article.author} • {dayjs(article.created_at).fromNow()}
       </p>
       <img src={article.article_img_url} alt="" />
       <p>{article.topic}</p>

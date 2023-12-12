@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
-    <header className="header">
+    <header>
       <Link to={"/home"}>
         <h1>NCN</h1>
       </Link>

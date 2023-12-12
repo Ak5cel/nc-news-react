@@ -1,3 +1,5 @@
+import "./Banner.css";
+
 const Banner = () => {
   return (
     <section className="banner">

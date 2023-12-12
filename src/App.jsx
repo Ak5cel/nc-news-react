@@ -12,10 +12,12 @@ function App() {
       <Header />
       <Navbar />
 
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/articles" element={<ArticlesView />} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/articles" element={<ArticlesView />} />
+        </Routes>
+      </main>
 
       <Footer />
     </BrowserRouter>

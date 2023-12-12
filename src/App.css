@@ -1,56 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: #0e1017;
+}
+
+body {
+  background-color: #fffbf7;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.563rem;
+  display: flex;
 }
 
 #root {
+  flex: 1;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem 2rem;
   text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 ul {
   list-style-type: none;
 }
 
-.header {
-  border: 2px solid black;
-  padding: 1rem 2rem;
+.align-left {
+  text-align: left;
 }
 
-.footer {
-  border: 2px solid rgb(61, 58, 58);
-  padding: 1rem 2rem;
-}
-
-.nav {
-  border: 2px solid cornflowerblue;
-  padding: 1rem 2rem;
-}
-
-.home-page {
-  border: 2px solid burlywood;
-  padding: 1rem 2rem;
-}
-
-.articles-view {
-  border: 2px solid rgb(214, 131, 22);
-  padding: 1rem 2rem;
-}
-
-.banner {
-  border: 2px solid rgb(232, 185, 124);
-  padding: 1rem 2rem;
-}
-
-.articles-list {
-  border: 2px solid blanchedalmond;
-  padding: 1rem 2rem;
-}
-
-.article-card {
-  border: 2px solid rgb(198, 182, 156);
-  padding: 1rem 2rem;
+.section-heading {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
 }

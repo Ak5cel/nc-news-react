@@ -37,7 +37,7 @@ const ArticlesView = () => {
 
   return (
     <div className="articles-view">
-      <h2>Browse Articles</h2>
+      <h2 className="section-heading align-left">Browse Articles</h2>
       <ArticlesList articles={articles} />
     </div>
   );
