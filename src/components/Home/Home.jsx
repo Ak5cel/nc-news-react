@@ -1,5 +1,5 @@
-import ArticlesList from "./ArticlesList";
-import Banner from "./Banner";
+import ArticlesList from "../ArticlesList/ArticlesList";
+import Banner from "../Banner";
 
 const Home = () => {
   return (
