@@ -33,3 +33,13 @@ export const getTopics = async () => {
     console.log(err.response.data);
   }
 };
+
+export const getCommentsByArticleId = async (articleId) => {
+  try {
+    const { data } = await newsApi.get(`/articles/${articleId}/comments`);
+
+    return data.comments;
+  } catch (err) {
+    console.log(err.response.data);
+  }
+};
