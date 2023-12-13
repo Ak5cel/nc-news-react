@@ -22,7 +22,7 @@ const CommentsSection = ({ article_id }) => {
   return (
     <div className="comments-section">
       <h3 className="section-heading align-left">Comments ({comments.length})</h3>
-      <CommentAdder />
+      <CommentAdder setComments={setComments} article_id={article_id} />
       <CommentsList comments={comments} />
     </div>
   );
