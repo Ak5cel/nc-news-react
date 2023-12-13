@@ -1,0 +1,23 @@
+.article {
+  text-align: left;
+  width: 100%;
+  max-width: 42.438em;
+  margin: auto;
+}
+
+.article > img {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.article > .topic-tag {
+  margin-bottom: 1rem;
+}
+
+.article > h2 {
+  line-height: 1.8rem;
+}
+
+.article > .article-body {
+  margin-bottom: 1rem;
+}

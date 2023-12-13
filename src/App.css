@@ -42,3 +42,8 @@ ul {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+.topic-tag {
+  display: inline-block;
+  color: #6e4f3c;
+}
