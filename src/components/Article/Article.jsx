@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getArticleById } from "../../utils/api";
+import { downVoteArticle, getArticleById, upVoteArticle } from "../../utils/api";
 import "./Article.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -20,13 +20,21 @@ const Article = ({ article_id }) => {
   }, []);
 
   const handleUpVote = () => {
-    console.log("upvote article");
-    setVotes(votes + 1);
+    upVoteArticle(article_id).catch((err) => {
+      console.log(err.response.data);
+      setVotes((currVotes) => currVotes - 1);
+    });
+
+    setVotes((currVotes) => currVotes + 1);
   };
 
   const handleDownVote = () => {
-    console.log("downvote article");
-    setVotes(votes - 1);
+    downVoteArticle(article_id).catch((err) => {
+      console.log(err.response.data);
+      setVotes((currVotes) => currVotes + 1);
+    });
+
+    setVotes((currVotes) => currVotes - 1);
   };
 
   if (isloading) {
@@ -42,9 +50,8 @@ const Article = ({ article_id }) => {
       <p className="topic-tag">{article.topic}</p>
       <img src={article.article_img_url} alt="" />
       <p className="article-body">{article.body}</p>
-      <p>{article.votes} votes</p>
       <VoteAdder onUpVote={handleUpVote} onDownVote={handleDownVote}>
-        {votes}
+        <span className="votes">{votes}</span>
       </VoteAdder>
     </article>
   );
