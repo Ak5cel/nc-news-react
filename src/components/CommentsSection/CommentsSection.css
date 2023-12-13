@@ -1,4 +1,9 @@
 .comments-section {
-  border: 2px solid beige;
-  padding: 2rem;
+  max-width: 42.438em;
+  margin: auto;
+}
+
+.comments-section > .section-heading {
+  margin-left: auto;
+  margin-right: auto;
 }

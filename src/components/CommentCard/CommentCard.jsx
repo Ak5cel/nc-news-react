@@ -8,7 +8,7 @@ const CommentCard = ({ comment }) => {
     <li className="comment-card">
       <p>{comment.author}</p>
       <p>{dayjs(comment.created_at).fromNow()}</p>
-      <p>{comment.body}</p>
+      <p className="comment-body">{comment.body}</p>
       <p>{comment.votes} votes</p>
     </li>
   );
