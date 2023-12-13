@@ -17,7 +17,7 @@ const Navbar = () => {
       <Link to={`/articles`}>All</Link>
       {topics.map((topic) => {
         return (
-          <Link key={topic.slug} to={`/articles/${topic.slug}`}>
+          <Link key={topic.slug} to={`/articles/topic/${topic.slug}`}>
             {" | "} {topic.slug[0].toUpperCase() + topic.slug.slice(1)}
           </Link>
         );

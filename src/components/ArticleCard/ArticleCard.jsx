@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./ArticleCard.css";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -6,7 +7,9 @@ dayjs.extend(relativeTime);
 const ArticleCard = ({ article }) => {
   return (
     <li className="article-card">
-      <h3>{article.title}</h3>
+      <Link to={`/articles/${article.article_id}`}>
+        <h3>{article.title}</h3>
+      </Link>
       <p>
         {article.author} • {dayjs(article.created_at).fromNow()}
       </p>

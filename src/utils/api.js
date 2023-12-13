@@ -14,6 +14,16 @@ export const getArticles = async () => {
   }
 };
 
+export const getArticleById = async (articleId) => {
+  try {
+    const { data } = await newsApi.get(`/articles/${articleId}`);
+
+    return data.article;
+  } catch (err) {
+    console.log(err.response.data);
+  }
+};
+
 export const getTopics = async () => {
   try {
     const { data } = await newsApi.get("/topics");
