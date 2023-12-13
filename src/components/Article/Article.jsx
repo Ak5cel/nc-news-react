@@ -29,9 +29,7 @@ const Article = ({ article_id }) => {
       <p className="topic-tag">{article.topic}</p>
       <img src={article.article_img_url} alt="" />
       <p className="article-body">{article.body}</p>
-      <p>
-        {article.votes} votes • {article.comment_count} comments
-      </p>
+      <p>{article.votes} votes</p>
     </article>
   );
 };
