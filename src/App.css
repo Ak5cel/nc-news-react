@@ -5,11 +5,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  color: #0e1017;
 }
 
 body {
   background-color: #fffbf7;
+  color: #0e1017;
   font-family: "Roboto", sans-serif;
   line-height: 1.563rem;
   display: flex;
