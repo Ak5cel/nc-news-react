@@ -20,21 +20,11 @@ const Article = ({ article_id }) => {
   }, []);
 
   const handleUpVote = () => {
-    upVoteArticle(article_id).catch((err) => {
-      console.log(err.response.data);
-      setVotes((currVotes) => currVotes - 1);
-    });
-
-    setVotes((currVotes) => currVotes + 1);
+    return upVoteArticle(article_id);
   };
 
   const handleDownVote = () => {
-    downVoteArticle(article_id).catch((err) => {
-      console.log(err.response.data);
-      setVotes((currVotes) => currVotes + 1);
-    });
-
-    setVotes((currVotes) => currVotes - 1);
+    return downVoteArticle(article_id);
   };
 
   if (isloading) {
@@ -50,7 +40,8 @@ const Article = ({ article_id }) => {
       <p className="topic-tag">{article.topic}</p>
       <img src={article.article_img_url} alt="" />
       <p className="article-body">{article.body}</p>
-      <VoteAdder onUpVote={handleUpVote} onDownVote={handleDownVote}>
+
+      <VoteAdder handleUpVote={handleUpVote} handleDownVote={handleDownVote} setState={setVotes}>
         <span className="votes">{votes}</span>
       </VoteAdder>
     </article>
