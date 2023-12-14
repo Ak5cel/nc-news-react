@@ -1,42 +1,56 @@
 import { useState } from "react";
+import { useSnackbar } from "notistack";
 import DownVoteButton from "../DownVoteButton";
 import UpVoteButton from "../UpVoteButton";
 import "./VoteAdder.css";
 
 const VoteAdder = ({ handleUpVote, handleDownVote, setState, children }) => {
   const [selectedButton, setSelectedButton] = useState(null);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const showCustomError = (err) => {
+    if (err.code === "ERR_NETWORK") {
+      enqueueSnackbar("Network error, please make sure you're online and try again");
+    } else {
+      enqueueSnackbar("Oops, something went wrong");
+    }
+  };
 
   const upVoteAction = () => {
-    handleUpVote().catch(() => {
+    handleUpVote().catch((err) => {
       setState((n) => n - 1);
       setSelectedButton(null);
+      showCustomError(err);
     });
     setState((n) => n + 1);
     setSelectedButton("up");
   };
 
   const undoUpVoteAction = () => {
-    handleDownVote().catch(() => {
+    handleDownVote().catch((err) => {
       setState((n) => n + 1);
       setSelectedButton("up");
+      showCustomError(err);
     });
     setState((n) => n - 1);
     setSelectedButton(null);
   };
 
   const downVoteAction = () => {
-    handleDownVote().catch(() => {
+    handleDownVote().catch((err) => {
       setState((n) => n + 1);
       setSelectedButton(null);
+      showCustomError(err);
     });
     setState((n) => n - 1);
     setSelectedButton("down");
   };
 
   const undoDownVoteAction = () => {
-    handleUpVote().catch(() => {
+    handleUpVote().catch((err) => {
       setState((n) => n - 1);
       setSelectedButton("down");
+      showCustomError(err);
     });
     setState((n) => n + 1);
     setSelectedButton(null);
