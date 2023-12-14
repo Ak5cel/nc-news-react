@@ -16,8 +16,6 @@ const CommentAdder = ({ setComments, article_id }) => {
     e.preventDefault();
     addButtonRef.current.disabled = true; // disable button temporarily until posted
 
-    console.log(`adding ${commentBodyInput} as ${currentUser} for ${article_id}`);
-
     postComment(currentUser, commentBodyInput, article_id).then((newComment) => {
       setComments((currComments) => {
         return [newComment, ...currComments];

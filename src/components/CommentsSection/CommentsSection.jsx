@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./CommentsSection.css";
 import CommentsList from "../CommentsList";
 import { getCommentsByArticleId } from "../../utils/api";
-import CommentAdder from "../CommentAdder/CommentAdder";
+import CommentAdder from "../CommentAdder";
 
 const CommentsSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
