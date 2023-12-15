@@ -25,6 +25,7 @@ function App() {
             <Routes>
               <Route path="/home" element={<Home />} />
               <Route path="/articles" element={<ArticlesView />} />
+              <Route path="/articles/topic/:topic" element={<ArticlesView />} />
               <Route path="/articles/:article_id" element={<SingleArticleView />} />
             </Routes>
           </main>
