@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import SingleArticleView from "./components/SingleArticleView";
 import SnackbarCloseButton from "./components/SnackbarCloseButton";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
@@ -15,20 +16,22 @@ function App() {
       action={(snackbarKey) => <SnackbarCloseButton snackbarKey={snackbarKey} />}
       autoHideDuration={3000}
     >
-      <BrowserRouter>
-        <Header />
-        <Navbar />
+      <UserProvider>
+        <BrowserRouter>
+          <Header />
+          <Navbar />
 
-        <main>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/articles" element={<ArticlesView />} />
-            <Route path="/articles/:article_id" element={<SingleArticleView />} />
-          </Routes>
-        </main>
+          <main>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/articles" element={<ArticlesView />} />
+              <Route path="/articles/:article_id" element={<SingleArticleView />} />
+            </Routes>
+          </main>
 
-        <Footer />
-      </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+      </UserProvider>
     </SnackbarProvider>
   );
 }

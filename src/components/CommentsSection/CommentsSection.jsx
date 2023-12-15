@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./CommentsSection.css";
 import CommentsList from "../CommentsList";
 import { getCommentsByArticleId } from "../../utils/api";
+import CommentAdder from "../CommentAdder";
 
 const CommentsSection = ({ article_id }) => {
   const [comments, setComments] = useState([]);
@@ -21,6 +22,7 @@ const CommentsSection = ({ article_id }) => {
   return (
     <div className="comments-section">
       <h3 className="section-heading align-left">Comments ({comments.length})</h3>
+      <CommentAdder setComments={setComments} article_id={article_id} />
       <CommentsList comments={comments} />
     </div>
   );

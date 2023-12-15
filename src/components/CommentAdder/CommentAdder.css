@@ -1,0 +1,32 @@
+.comment-adder {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.comment-adder > label {
+  width: 100%;
+  text-align: left;
+}
+
+.comment-adder > button {
+  padding: 0.5rem 1.5rem;
+  background-color: #ebf7e0;
+  border: 1px solid darkgreen;
+  cursor: pointer;
+}
+
+#comment-body-input {
+  margin-top: 0.25rem;
+  width: 100%;
+  height: 7rem;
+  resize: none;
+  font-size: 1rem;
+  background-color: #fffbf7;
+  border: 2px solid #d9d9d9;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
