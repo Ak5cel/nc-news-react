@@ -1,5 +1,7 @@
 import "./CommentCard.css";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { useSnackbar } from "notistack";
 import IconButton from "@mui/material/IconButton";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import dayjs from "dayjs";
@@ -8,9 +10,20 @@ import { deleteComment } from "../../utils/api";
 dayjs.extend(relativeTime);
 
 const CommentCard = ({ comment, setComments }) => {
-  const currentUser = "grumpy19"; //hardcoded for now
+  const { currentUser } = useContext(UserContext);
+  const deleteButtonRef = useRef(null);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const showCustomError = (err) => {
+    if (err.code === "ERR_NETWORK") {
+      enqueueSnackbar("Network error, please make sure you're online and try again");
+    } else {
+      enqueueSnackbar("Oops, something went wrong");
+    }
+  };
 
   const handleDelete = () => {
+    deleteButtonRef.current.disabled = true;
     deleteComment(comment.comment_id)
       .then(() => {
         setComments((currComments) => {
@@ -18,7 +31,10 @@ const CommentCard = ({ comment, setComments }) => {
         });
       })
       .catch((err) => {
-        console.log("error deleting comment");
+        showCustomError(err);
+      })
+      .finally(() => {
+        deleteButtonRef.current.disabled = false;
       });
   };
 
@@ -30,7 +46,7 @@ const CommentCard = ({ comment, setComments }) => {
       <p>{comment.votes} votes</p>
 
       {comment.author === currentUser ? (
-        <IconButton className="delete-button" onClick={handleDelete} color="default" size="small">
+        <IconButton className="delete-button" onClick={handleDelete} ref={deleteButtonRef} color="default" size="small">
           <DeleteOutlinedIcon fontSize="small" />
         </IconButton>
       ) : (
