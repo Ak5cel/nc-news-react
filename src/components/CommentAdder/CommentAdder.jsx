@@ -25,32 +25,20 @@ const CommentAdder = ({ setComments, article_id }) => {
   const handleAddComment = (e) => {
     e.preventDefault();
 
-    setComments((currComments) => {
-      const newComment = {
-        comment_id: currComments.length + 1,
-        body: commentBodyInput,
-        article_id: article_id,
-        author: currentUser,
-        votes: 0,
-        created_at: Date.now(),
-      };
-
-      return [newComment, ...currComments];
-    });
     setCommentBodyInput("");
 
-    postComment(currentUser, commentBodyInput, article_id).catch((err) => {
-      // reset comments and refill the form with user's input
-      // if posting fails
-      setCommentBodyInput(commentBodyInput);
-      setComments((currComments) => {
-        const newCommentId = currComments.length;
-        console.log(newCommentId, "<--new id");
-
-        return currComments.filter((comment) => comment.comment_id !== newCommentId);
+    postComment(currentUser, commentBodyInput, article_id)
+      .then((newComment) => {
+        setComments((currComments) => {
+          return [newComment, ...currComments];
+        });
+      })
+      .catch((err) => {
+        // refill the form with user's input and show error feedback
+        // if posting fails
+        setCommentBodyInput(commentBodyInput);
+        showCustomError(err);
       });
-      showCustomError(err);
-    });
   };
 
   return (
