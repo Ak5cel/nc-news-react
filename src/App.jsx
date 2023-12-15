@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import SingleArticleView from "./components/SingleArticleView";
 import SnackbarCloseButton from "./components/SnackbarCloseButton";
 import { UserProvider } from "./contexts/UserContext";
+import Error from "./components/Error";
 
 function App() {
   return (
@@ -23,10 +24,11 @@ function App() {
 
           <main>
             <Routes>
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/articles" element={<ArticlesView />} />
               <Route path="/articles/topic/:topic" element={<ArticlesView />} />
               <Route path="/articles/:article_id" element={<SingleArticleView />} />
+              <Route path="*" element={<Error status={404} message={"Page not found"} />} />
             </Routes>
           </main>
 

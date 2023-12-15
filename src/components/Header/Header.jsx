@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <header>
-      <Link to={"/home"}>
+      <Link to={"/"}>
         <h1>NCN</h1>
       </Link>
     </header>

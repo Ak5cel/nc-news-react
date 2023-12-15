@@ -5,23 +5,15 @@ const newsApi = axios.create({
 });
 
 export const getArticles = async (topic) => {
-  try {
-    const { data } = await newsApi.get("/articles", { params: { topic } });
+  const { data } = await newsApi.get("/articles", { params: { topic } });
 
-    return data.articles;
-  } catch (err) {
-    console.log(err.response.data);
-  }
+  return data.articles;
 };
 
 export const getArticleById = async (articleId) => {
-  try {
-    const { data } = await newsApi.get(`/articles/${articleId}`);
+  const { data } = await newsApi.get(`/articles/${articleId}`);
 
-    return data.article;
-  } catch (err) {
-    console.log(err.response.data);
-  }
+  return data.article;
 };
 
 export const upVoteArticle = async (articleId) => {
@@ -47,13 +39,9 @@ export const getTopics = async () => {
 };
 
 export const getCommentsByArticleId = async (articleId) => {
-  try {
-    const { data } = await newsApi.get(`/articles/${articleId}/comments`);
+  const { data } = await newsApi.get(`/articles/${articleId}/comments`);
 
-    return data.comments;
-  } catch (err) {
-    console.log(err.response.data);
-  }
+  return data.comments;
 };
 
 export const postComment = async (username, commentBody, articleId) => {
