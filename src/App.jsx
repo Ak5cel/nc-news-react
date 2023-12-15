@@ -1,19 +1,25 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SnackbarProvider } from "notistack";
 import ArticlesView from "./components/ArticlesView";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import SingleArticleView from "./components/SingleArticleView";
+import SnackbarCloseButton from "./components/SnackbarCloseButton";
 import { UserProvider } from "./contexts/UserContext";
 
 function App() {
   return (
-    <UserProvider>
+    <SnackbarProvider
+      action={(snackbarKey) => <SnackbarCloseButton snackbarKey={snackbarKey} />}
+      autoHideDuration={3000}
+    >
+      <UserProvider>
       <BrowserRouter>
-        <Header />
-        <Navbar />
+          <Header />
+          <Navbar />
 
         <main>
           <Routes>
@@ -23,8 +29,9 @@ function App() {
           </Routes>
         </main>
 
-        <Footer />
-      </BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+    </SnackbarProvider>
     </UserProvider>
   );
 }

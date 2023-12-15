@@ -24,6 +24,18 @@ export const getArticleById = async (articleId) => {
   }
 };
 
+export const upVoteArticle = async (articleId) => {
+  const { data } = await newsApi.patch(`/articles/${articleId}`, { inc_votes: 1 });
+
+  return data.article;
+};
+
+export const downVoteArticle = async (articleId) => {
+  const { data } = await newsApi.patch(`/articles/${articleId}`, { inc_votes: -1 });
+
+  return data.article;
+};
+
 export const getTopics = async () => {
   try {
     const { data } = await newsApi.get("/topics");
