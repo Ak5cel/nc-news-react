@@ -17,22 +17,22 @@ function App() {
       autoHideDuration={3000}
     >
       <UserProvider>
-      <BrowserRouter>
+        <BrowserRouter>
           <Header />
           <Navbar />
 
-        <main>
-          <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/articles" element={<ArticlesView />} />
-            <Route path="/articles/:article_id" element={<SingleArticleView />} />
-          </Routes>
-        </main>
+          <main>
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/articles" element={<ArticlesView />} />
+              <Route path="/articles/:article_id" element={<SingleArticleView />} />
+            </Routes>
+          </main>
 
           <Footer />
         </BrowserRouter>
+      </UserProvider>
     </SnackbarProvider>
-    </UserProvider>
   );
 }
 
